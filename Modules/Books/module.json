@@ -1,0 +1,16 @@
+{
+    "name": "Books",
+    "alias": "books",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Books\\Providers\\BooksServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
