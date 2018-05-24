@@ -162,6 +162,8 @@ return [
 
         Laracasts\Flash\FlashServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+
+        App\Providers\MenuServiceProvider::class,
     ],
 
     /*

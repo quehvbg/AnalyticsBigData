@@ -14,17 +14,17 @@ class MenuService implements MenuServiceContract
     }
 
     public function addMenu($menu){
-        $this->repository.addMenu($menu);
+        $this->repository->addMenu($menu);
     }
-    
+
     public function addSubMenu($submenu){
-        $this->repository.addSubMenu($submenu);
+        $this->repository->addSubMenu($submenu);
     }
 
     public function addMenuItem($item){
-        $this->repository.addMenuItem($item);
+        $this->repository->addMenuItem($item);
     }
-    
+
     public function getListMenu()
     {
         return $this->repository->getListMenu();

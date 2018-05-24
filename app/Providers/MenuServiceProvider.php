@@ -28,7 +28,7 @@ class MenuServiceProvider extends ServiceProvider
     public function register()
     {
         //
-        $this->app->bind(MenuRepositoryContract::class, MenuRepository::class);
-        $this->app->bind(MenuServiceContract::class, MenuService::class);
+        $this->app->singleton(MenuRepositoryContract::class, MenuRepository::class);
+        $this->app->singleton(MenuServiceContract::class, MenuService::class);
     }
 }

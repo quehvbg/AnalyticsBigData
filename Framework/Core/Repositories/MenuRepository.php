@@ -13,19 +13,19 @@ class MenuRepository implements MenuRepositoryContract
     }
 
     public function addMenu($menu){
-        $this->model.addMenu($menu);
+        $this->model->addMenu($menu);
     }
-    
+
     public function addSubMenu($submenu){
-        $this->model.addSubMenu($submenu);
+        $this->model->addSubMenu($submenu);
     }
 
     public function addMenuItem($item){
-        $this->model.addMenuItem($item);
+        $this->model->addMenuItem($item);
     }
-    
+
     public function getListMenu()
     {
-        return $this->$model->getListMenu();
+        return $this->model->getListMenu();
     }
 }

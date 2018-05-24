@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Framework\Core\Services\MenuServiceContract;
 
 class HomeController extends Controller
 {
@@ -11,9 +12,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(MenuServiceContract $service)
     {
         $this->middleware('auth');
+        $this->menuService = $service;
     }
 
     /**
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //Laraviet: test menu service only
+        dd($this->menuService->getListMenu());
         //return view('home');
         return view('page.index');
     }

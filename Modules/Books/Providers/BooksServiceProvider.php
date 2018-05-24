@@ -40,7 +40,7 @@ class BooksServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->registerFactories();
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');        
+        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
     /**
@@ -110,7 +110,7 @@ class BooksServiceProvider extends ServiceProvider
 
     /**
      * Register an additional directory of factories.
-     * 
+     *
      * @return void
      */
     public function registerFactories()
@@ -131,6 +131,8 @@ class BooksServiceProvider extends ServiceProvider
     }
 
     private function registerMenu(){
-        //$this->menuService->addMenu(new Menu());
+        //Laraviet: maybe cannot inject in Provider, should use app->make
+        $menu = $this->app->make(MenuServiceContract::class);
+        $menu->addMenu("Books");
     }
 }
