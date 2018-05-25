@@ -4,6 +4,10 @@ namespace Modules\Company\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Framework\Core\Services\MenuServiceContract;
+use Framework\Core\Entities\Menu;
+use Framework\Core\Entities\SubMenu;
+use Framework\Core\Entities\MenuItem;
 
 class CompanyServiceProvider extends ServiceProvider
 {
@@ -36,6 +40,7 @@ class CompanyServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->registerMenu();
     }
 
     /**
@@ -109,5 +114,12 @@ class CompanyServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
+    }
+
+    private function registerMenu(){
+        $menu = $this->app->make(MenuServiceContract::class);
+        $menu->addMenu(new Menu("", "Comapny", "fa fa-institution"));
+        $menuItem = array(new MenuItem('/test1', 'Test 1'), new MenuItem('/test2', 'Test 2')); 
+        $menu->addSubmenu(array(new SubMenu("/books", "List books" , $menuItem), new SubMenu("/books/create", "Create book", null)));
     }
 }

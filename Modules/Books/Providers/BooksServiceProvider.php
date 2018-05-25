@@ -10,17 +10,12 @@ use Modules\Books\Repositories\BookRepository;
 use Modules\Books\Services\BookServiceContract;
 use Modules\Books\Repositories\BookRepositoryContract;
 use Framework\Core\Services\MenuServiceContract;
+use Framework\Core\Entities\Menu;
+use Framework\Core\Entities\SubMenu;
+use Framework\Core\Entities\MenuItem;
 
 class BooksServiceProvider extends ServiceProvider
 {
-    protected $menuService;
-
-    /*
-    public function __construct(MenuServiceContract $service)
-    {
-        $this->menuService = $service;
-    }
-    */
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -133,6 +128,8 @@ class BooksServiceProvider extends ServiceProvider
     private function registerMenu(){
         //Laraviet: maybe cannot inject in Provider, should use app->make
         $menu = $this->app->make(MenuServiceContract::class);
-        $menu->addMenu("Books");
+        $menu->addMenu(new Menu("", "Books", "fa fa-book"));
+        $menuItem = array(new MenuItem('/test1', 'Test 1'), new MenuItem('/test2', 'Test 2')); 
+        $menu->addSubmenu(array(new SubMenu("/books", "List books" , $menuItem), new SubMenu("/books/create", "Create book", null)));        
     }
 }

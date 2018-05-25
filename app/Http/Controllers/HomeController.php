@@ -26,9 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         //Laraviet: test menu service only
-        dd($this->menuService->getListMenu());
-        //return view('home');
-        return view('page.index');
+        //dd($this->menuService->getListMenu());
+        $menus = $this->menuService->getListMenu();
+        return view('page.index', compact("menus"));
     }
 
     public function sk403(){
